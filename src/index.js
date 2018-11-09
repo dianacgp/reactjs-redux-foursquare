@@ -11,9 +11,6 @@ import App from './components/App'
 
 const store = createStore(rootReducer, applyMiddleware(apiMiddleware))
 
-store.dispatch(getPlaces())
-store.dispatch(getRecomendations())
-
 ReactDOM.render(
 	<Provider store={store}>
 		<App />

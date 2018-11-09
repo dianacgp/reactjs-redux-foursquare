@@ -1,4 +1,4 @@
-import {GET_PLACES, GET_RECOMENDATIONS} from '../action-types'
+import * as actions from '../action-types'
 
 import { Record, List } from 'immutable';
 
@@ -12,9 +12,9 @@ const InitialState = Record({
   places_error: false,
 
   food: new List(),
-  food_refreshing: false,
-  food_loaded: false,
-  food_error: false,
+  foodRefreshing: false,
+  foodLoaded: false,
+  foodError: false,
 
   languageApp: null,
   
@@ -26,7 +26,7 @@ let result =  [];
 export const places = (state = initialState, action) => {
 	if (!(state instanceof InitialState)) return initialState.mergeDeep(state);
 	switch (action.type) {
-		case GET_PLACES.SUCCESS: 
+		case actions.GET_PLACES.SUCCESS: 
 			result =  [];
       if (action.payload.response.group.totalResults > 0){
        result = action.payload.response.group.results;
@@ -35,26 +35,39 @@ export const places = (state = initialState, action) => {
       return state.merge({
         places: result,
       });
-		case GET_PLACES.PENDING: 
+		case actions.GET_PLACES.PENDING: 
 			return state
-		case GET_PLACES.FAILURE:
+		case actions.GET_PLACES.FAILURE:
 			return state
 
 		//--------------------------------
 
-		case GET_RECOMENDATIONS.SUCCESS: 
+		case actions.GET_RECOMENDATIONS.SUCCESS: 
 			result =  []
       if (action.payload.response.group.totalResults > 0){
        result = action.payload.response.group.results;
       }
 			
       return state.merge({
-        places: result,
+        food: result,
+        foodRefreshing: false,
+        foodError: false,
+        foodLoaded: true,
       });
-		case GET_RECOMENDATIONS.PENDING: 
-			return state
-		case GET_RECOMENDATIONS.FAILURE:
-			return state
+		case actions.GET_RECOMENDATIONS.PENDING: 
+  		return state.merge({
+        foodError: false,
+        foodRefreshing: true,
+        food: new List(),
+        foodLoaded: false,
+
+      });
+		case actions.GET_RECOMENDATIONS.FAILURE:
+			   return state.merge({
+        foodRefreshing: false,
+        foodError: true,
+        foodLoaded: false,
+      });
 		default: 
 			return state
 	}

@@ -7,3 +7,4 @@ const asyncActionType = (type) => ({
 export const API = 'API'
 export const GET_PLACES = asyncActionType('GET_PLACES')
 export const GET_RECOMENDATIONS = asyncActionType('GET_RECOMENDATIONS')
+export const GET_RECOMENDATIONS_FOOD = asyncActionType('GET_RECOMENDATIONS_FOOD')
