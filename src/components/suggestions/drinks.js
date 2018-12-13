@@ -3,38 +3,41 @@ import { connect } from 'react-redux';
 import { GetRecomendations } from '../../store/actions/places';
 import Suggestions from './suggestions'
 
-class Food extends Component {
+class Drinks extends Component {
 
 
   render() {
     const { suggestions,  suggestionsRefreshing, suggestionsLoaded, GetRecomendations, suggestionsError, ll} = this.props;
-
-    console.log('food', suggestions)
+    console.log('drinks', suggestions)
     if (ll !== null){
       return (
+        <div>
+          <p>drinks</p>
         <Suggestions
-          section='food'
+          section='drinks'
           GetRecomendations={GetRecomendations}
           refreshing={suggestionsRefreshing}
           suggestions = {suggestions}
           suggestionsLoaded={suggestionsLoaded}
           suggestionsError={suggestionsError}
         />
+        </div>
       );
     }else{
       return (<div><p>nulo</p></div>)
     }
+
   }
 }
 
 const mapStateToProps = state => {
   return {
-    suggestionsRefreshing: state.places.foodRefreshing,
-    suggestions: state.places.food,
-    suggestionsError: state.places.foodError,
-    suggestionsLoaded: state.places.foodLoaded,
+    suggestionsRefreshing: state.places.drinksRefreshing,
+    suggestions: state.places.drinks,
+    suggestionsError: state.places.drinksError,
+    suggestionsLoaded: state.places.drinksLoaded,
     ll: state.places.ll
   }
 }
 
-export default connect(state => ( mapStateToProps), { GetRecomendations })(Food);
+export default connect(state => ( mapStateToProps), { GetRecomendations })(Drinks);

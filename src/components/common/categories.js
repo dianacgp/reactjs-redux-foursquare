@@ -14,7 +14,7 @@ export default class Categories extends Component {
         }
         { place.categories && place.categories.map( (category, i) =>
  
-          <p className='badge badge-info'>{category.shortName}</p>
+          <p key={i} className='badge badge-info'>{category.shortName}</p>
 
         )}
       </div>

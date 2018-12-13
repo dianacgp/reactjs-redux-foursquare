@@ -6,5 +6,7 @@ const asyncActionType = (type) => ({
 
 export const API = 'API'
 export const GET_PLACES = asyncActionType('GET_PLACES')
-export const GET_RECOMENDATIONS = asyncActionType('GET_RECOMENDATIONS')
+export const GET_RECOMENDATIONS_COFFEE = asyncActionType('GET_RECOMENDATIONS_COFFEE')
 export const GET_RECOMENDATIONS_FOOD = asyncActionType('GET_RECOMENDATIONS_FOOD')
+export const GET_RECOMENDATIONS_DRINKS = asyncActionType('GET_RECOMENDATIONS_DRINKS')
+export const SET_LOCATION = 'SET_LOCATION'

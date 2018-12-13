@@ -8,10 +8,10 @@ export default class Suggestions extends Component {
 
 	constructor(props) {
     super(props);
-    console.log('props', this.props)
+
   }
 	componentDidMount () {
-
+		console.log('GetRecomendations ', this.props.section)
 		this.props.GetRecomendations(this.props.section);
 
 	}
