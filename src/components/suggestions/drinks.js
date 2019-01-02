@@ -7,25 +7,18 @@ class Drinks extends Component {
 
 
   render() {
-    const { suggestions,  suggestionsRefreshing, suggestionsLoaded, GetRecomendations, suggestionsError, ll} = this.props;
-    console.log('drinks', suggestions)
-    if (ll !== null){
-      return (
-        <div>
-          <p>drinks</p>
-        <Suggestions
-          section='drinks'
-          GetRecomendations={GetRecomendations}
-          refreshing={suggestionsRefreshing}
-          suggestions = {suggestions}
-          suggestionsLoaded={suggestionsLoaded}
-          suggestionsError={suggestionsError}
-        />
-        </div>
-      );
-    }else{
-      return (<div><p>nulo</p></div>)
-    }
+    const { suggestions,  suggestionsRefreshing, suggestionsLoaded, GetRecomendations, suggestionsError, ll } = this.props;
+
+    return (
+      <Suggestions
+        section='drinks'
+        GetRecomendations={GetRecomendations}
+        refreshing={suggestionsRefreshing}
+        suggestions = {suggestions}
+        suggestionsLoaded={suggestionsLoaded}
+        suggestionsError={suggestionsError}
+      />
+    );
 
   }
 }

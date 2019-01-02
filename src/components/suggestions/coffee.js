@@ -6,24 +6,19 @@ import Suggestions from './suggestions'
 class Coffee extends Component {
 
   render() {
-    const { suggestions,  suggestionsRefreshing, suggestionsLoaded, GetRecomendations, suggestionsError, ll} = this.props;
+    const { suggestions,  suggestionsRefreshing, suggestionsLoaded, GetRecomendations, suggestionsError, ll } = this.props;
 
-    if (ll !== null){
-      return (
-        <Suggestions
-          section='coffee'
-          GetRecomendations={GetRecomendations}
-          refreshing={suggestionsRefreshing}
-          suggestions = {suggestions}
-          suggestionsLoaded={suggestionsLoaded}
-          suggestionsError={suggestionsError}
-        />
-      );
-    }else{
-      return (<div><p>nulo</p></div>)
-
-    }
-
+    console.log('coffe primero', suggestionsRefreshing)
+    return (
+      <Suggestions
+        section='coffee'
+        GetRecomendations={GetRecomendations}
+        refreshing={suggestionsRefreshing}
+        suggestions = {suggestions}
+        suggestionsLoaded={suggestionsLoaded}
+        suggestionsError={suggestionsError}
+      />
+    );
   }
 }
 

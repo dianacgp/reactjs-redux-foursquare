@@ -7,23 +7,18 @@ class Food extends Component {
 
 
   render() {
-    const { suggestions,  suggestionsRefreshing, suggestionsLoaded, GetRecomendations, suggestionsError, ll} = this.props;
+    const { suggestions,  suggestionsRefreshing, suggestionsLoaded, GetRecomendations, suggestionsError, ll } = this.props;
 
-    console.log('food', suggestions)
-    if (ll !== null){
-      return (
-        <Suggestions
-          section='food'
-          GetRecomendations={GetRecomendations}
-          refreshing={suggestionsRefreshing}
-          suggestions = {suggestions}
-          suggestionsLoaded={suggestionsLoaded}
-          suggestionsError={suggestionsError}
-        />
-      );
-    }else{
-      return (<div><p>nulo</p></div>)
-    }
+    return (
+      <Suggestions
+        section='food'
+        GetRecomendations={GetRecomendations}
+        refreshing={suggestionsRefreshing}
+        suggestions = {suggestions}
+        suggestionsLoaded={suggestionsLoaded}
+        suggestionsError={suggestionsError}
+      />
+    );
   }
 }
 
